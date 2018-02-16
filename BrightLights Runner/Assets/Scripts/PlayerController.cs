@@ -35,11 +35,6 @@ public class PlayerController : MonoBehaviour
         if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if jump is pressed AND player on the ground
             jump = true;
 
-        //jump check DEV WORK ONLY
-        //if ((Input.GetButtonDown("Jump") && grounded)) //if jump is pressed AND player on the ground
-        //{ 
-        //    jump = true;
-        //}
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 
