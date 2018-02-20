@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 //Controls player movement
 
@@ -22,7 +21,6 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         cldr2d = GetComponent<Collider2D>();
-        jump = false; //stops player jumping as they spawn
         grounded = false;
         targetRotation = transform.rotation;
     }
@@ -31,11 +29,6 @@ public class PlayerController : MonoBehaviour
     {
         //grounded check
         grounded = Physics2D.IsTouchingLayers(cldr2d, whatIsGround);
-
-
-        //if (rb2d.velocity.y >= 0 && rb2d.velocity.y <= 0.2) //no velocity on Y axis (accounts for rotation errors)
-         //   grounded = true;
-        //else grounded = false;
 
         //jump check FOR MOBILE
         if (Input.touchCount > 0)
