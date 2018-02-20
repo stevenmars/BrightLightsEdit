@@ -32,9 +32,11 @@ public class PlayerController : MonoBehaviour
         else grounded = false;
 
         //jump check FOR MOBILE
-        if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if jump is pressed AND player on the ground
-            jump = true;
-
+        if (Input.touchCount > 0)
+        {
+            if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if jump is pressed AND player on the ground
+                jump = true;
+        }
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
 
@@ -47,9 +49,14 @@ public class PlayerController : MonoBehaviour
         if (jump)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
-            //flip in the air
-            targetRotation *= Quaternion.Euler(0, 0, 180f); //BUG: This doesnt flip you forward always, on even jumps you backflip. Use a couroutine to apply rotates in the air better
+            StartCoroutine("Flip");//BUG: This doesnt flip you forward always, on even jumps you backflip. Use a couroutine to apply rotates in the air better
             jump = false;
         }
+    }
+
+    IEnumerator Flip() //flip in the air
+    {
+        targetRotation *= Quaternion.Euler(0, 0, 180f);
+        yield return null;
     }
 }
