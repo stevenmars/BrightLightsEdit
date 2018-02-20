@@ -229,7 +229,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 31759154}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 214328152}
   - component: {fileID: 214328151}
   - component: {fileID: 214328153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214328148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.46, y: -0.04, z: 0}
+  m_LocalPosition: {x: -9.49, y: -0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -369,8 +369,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: 0
-  moveSpeed: 6
+  moveSpeed: 5
   jumpForce: 700
+  grounded: 0
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &342762909
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &880474644
 Transform:
   m_ObjectHideFlags: 0
@@ -540,7 +544,7 @@ GameObject:
   - component: {fileID: 2050350725}
   - component: {fileID: 2050350724}
   - component: {fileID: 2050350723}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
