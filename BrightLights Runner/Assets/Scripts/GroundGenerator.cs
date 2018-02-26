@@ -18,7 +18,7 @@ public class GroundGenerator : MonoBehaviour {
 	void Update () {
 		if (transform.position.x < generationPoint.position.x)
         {
-            transform.position = new Vector3(transform.position.x + groundWidth+15, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + groundWidth, transform.position.y, transform.position.z);
             //generate new ground
             Instantiate(theGround, transform.position, transform.rotation);
         }
