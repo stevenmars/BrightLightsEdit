@@ -6,8 +6,11 @@ public class ObstacleGenerator : MonoBehaviour {
 
     public GameObject theObstacle;
     public Transform generationPoint;
+    public float distanceBetween;
+    public float distanceMin;
+    public float distanceMax;
 
-    private float obstacleWidth; //also not needed maybe
+    private float obstacleWidth;
 
     // Use this for initialization
     void Start()
@@ -20,9 +23,9 @@ public class ObstacleGenerator : MonoBehaviour {
     {
         if (transform.position.x < generationPoint.position.x)
         {
-            transform.position = new Vector3(transform.position.x + obstacleWidth+15, transform.position.y, transform.position.z); //+10 because the ground is 10units long
-            //generate new ground
-            Instantiate(theObstacle, transform.position, transform.rotation);
+            distanceBetween = Random.Range(distanceMin, distanceMax);
+            transform.position = new Vector3(transform.position.x + obstacleWidth + distanceBetween, transform.position.y, transform.position.z); //+10 because the ground is 10units long
+            Instantiate(theObstacle, transform.position, transform.rotation); //generate new ground
         }
     }
 }

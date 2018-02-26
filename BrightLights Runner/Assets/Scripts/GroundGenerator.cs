@@ -7,7 +7,7 @@ public class GroundGenerator : MonoBehaviour {
     public GameObject theGround;
     public Transform generationPoint;
 
-    private float groundWidth; //also not needed maybe
+    private float groundWidth;
 
 	// Use this for initialization
 	void Start () {

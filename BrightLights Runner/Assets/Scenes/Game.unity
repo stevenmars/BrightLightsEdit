@@ -417,6 +417,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1707064706732280, guid: 752b7c642e5400642a20b19d9fe52289, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 752b7c642e5400642a20b19d9fe52289, type: 2}
   m_IsPrefabParent: 0
@@ -492,6 +496,9 @@ MonoBehaviour:
   theObstacle: {fileID: 1707064706732280, guid: 752b7c642e5400642a20b19d9fe52289,
     type: 2}
   generationPoint: {fileID: 325198362}
+  distanceBetween: 0
+  distanceMin: 10
+  distanceMax: 20
 --- !u!4 &1080989895
 Transform:
   m_ObjectHideFlags: 0
