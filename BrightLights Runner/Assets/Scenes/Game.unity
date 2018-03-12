@@ -281,7 +281,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214328148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0.03, z: 0}
+  m_LocalPosition: {x: -7, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -350,6 +350,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  theGameManager: {fileID: 1299382275}
 --- !u!1 &325198361
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +434,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4842075482922434, guid: e945ae150ceca5e4a9165603145b6d72, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 4842075482922434, guid: e945ae150ceca5e4a9165603145b6d72, type: 2}
       propertyPath: m_LocalPosition.y
@@ -467,7 +468,12 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1.8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4842075482922434, guid: e945ae150ceca5e4a9165603145b6d72, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114681898290559392, guid: e945ae150ceca5e4a9165603145b6d72, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e945ae150ceca5e4a9165603145b6d72, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1080989893
@@ -543,6 +549,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 31759158}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1299382274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1299382276}
+  - component: {fileID: 1299382275}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1299382275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1299382274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d46cbb07085b64784740ac0f05cc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundGenerator: {fileID: 1684500919}
+  ObstacleGenerator: {fileID: 1080989895}
+  thePlayer: {fileID: 214328153}
+--- !u!4 &1299382276
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1299382274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.16563515, y: -0.41630062, z: -9.912792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391935940
 GameObject:

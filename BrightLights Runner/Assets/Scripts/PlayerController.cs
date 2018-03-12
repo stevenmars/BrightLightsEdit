@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 700f;
     public bool grounded;
     public LayerMask whatIsGround;
+    public GameManager theGameManager;
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
@@ -56,5 +57,11 @@ public class PlayerController : MonoBehaviour
     {
         targetRotation *= Quaternion.Euler(0, 0, 180f);
         yield return null;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Obstacle")
+            theGameManager.Restart();
     }
 }
