@@ -580,6 +580,8 @@ MonoBehaviour:
   GroundGenerator: {fileID: 1684500919}
   ObstacleGenerator: {fileID: 1080989895}
   thePlayer: {fileID: 214328153}
+  theObstacle: {fileID: 0}
+  theCamera: {fileID: 31759159}
 --- !u!4 &1299382276
 Transform:
   m_ObjectHideFlags: 0

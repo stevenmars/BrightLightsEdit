@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
     public Transform GroundGenerator, ObstacleGenerator;
     public PlayerController thePlayer;
+    public ObstacleGenerator theObstacle;
+    public CameraController theCamera;
 
     private Vector3 groundStartPoint, obstacleStartPoint;
     private Vector3 playerStartPoint;
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour {
 		
 	}
 
+    //calls co-routine for restarting game
     public void Restart()
     {
         StartCoroutine("RestartCo");
@@ -46,9 +49,11 @@ public class GameManager : MonoBehaviour {
             Destroy(obstacleList[j].gameObject);
         }
 
+        //reset positions
         thePlayer.transform.position = playerStartPoint;
         GroundGenerator.position = groundStartPoint;
         ObstacleGenerator.position = obstacleStartPoint;
+
         thePlayer.gameObject.SetActive(true);
     }
 }

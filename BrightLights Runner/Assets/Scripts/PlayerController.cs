@@ -17,11 +17,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
     private Quaternion targetRotation;
+    private Renderer playerColour;
 
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         cldr2d = GetComponent<Collider2D>();
+        playerColour = gameObject.GetComponent<Renderer>();
         grounded = false;
         targetRotation = transform.rotation;
     }
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
         if (jump)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
-            StartCoroutine("Flip");//BUG: This doesnt flip you forward always, on even jumps you backflip
+            StartCoroutine("Flip");//BUG: This doesnt flip you forward always, on even jumps you backflip -> animate instead
             jump = false;
         }
     }
@@ -59,9 +61,15 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
+    //called when player touches an obstacle
     private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Obstacle")
-            theGameManager.Restart();
+    { 
+        if (other.gameObject.tag == "Obstacle") //maybe add animation for fading out
+        {
+            //theGameManager.Restart(); //in case we decide to reset after death instead of continue, this works except for the background colour
+            float t = Mathf.Lerp(Time.time, 3, 0)/30;
+            playerColour.material.color = Color.Lerp(Color.white, Color.black, t);
+            Destroy(other.gameObject, 0.2f);
+        }
     }
 }
