@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
     private Quaternion targetRotation;
-    private Renderer playerColour;
+    public Renderer playerColour;
     private float brightTime;
 
     void Awake()
@@ -74,14 +74,11 @@ public class PlayerController : MonoBehaviour
         {
             //theGameManager.Restart(); //in case we decide to reset after death instead of continue, this works except for the background colour
             //theCamera.RestartBrightness(); //resets the brightness of the screen back to white
-            float t = Mathf.Lerp(brightTime, 3, 0)/30;
-            playerColour.material.color = Color.Lerp(Color.white, Color.black, t);
+
+            //change player colour
+            theCamera.ChangePlayerColour();
+
             Destroy(other.gameObject, 0.2f);
         }
-    }
-
-    public void ResetPlayerColour()
-    {
-        brightTime = 0;
     }
 }
