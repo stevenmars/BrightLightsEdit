@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour
     public bool grounded;
     public LayerMask whatIsGround;
     public GameManager theGameManager;
+    public CameraController theCamera;
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
     private Quaternion targetRotation;
     private Renderer playerColour;
+    private float brightTime;
 
     void Awake()
     {
@@ -26,14 +28,18 @@ public class PlayerController : MonoBehaviour
         playerColour = gameObject.GetComponent<Renderer>();
         grounded = false;
         targetRotation = transform.rotation;
+        brightTime = 0;
     }
 
     void Update()
     {
+        //update the time
+        brightTime += Time.deltaTime;
+
         //grounded check
         grounded = Physics2D.IsTouchingLayers(cldr2d, whatIsGround);
 
-        //jump check FOR MOBILE
+        //jump check
         if (Input.touchCount > 0)
         {
             if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if jump is pressed AND player on the ground
@@ -67,9 +73,15 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Obstacle") //maybe add animation for fading out
         {
             //theGameManager.Restart(); //in case we decide to reset after death instead of continue, this works except for the background colour
-            float t = Mathf.Lerp(Time.time, 3, 0)/30;
+            //theCamera.RestartBrightness(); //resets the brightness of the screen back to white
+            float t = Mathf.Lerp(brightTime, 3, 0)/30;
             playerColour.material.color = Color.Lerp(Color.white, Color.black, t);
             Destroy(other.gameObject, 0.2f);
         }
+    }
+
+    public void ResetPlayerColour()
+    {
+        brightTime = 0;
     }
 }

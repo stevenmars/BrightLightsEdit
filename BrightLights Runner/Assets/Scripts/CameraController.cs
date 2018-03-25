@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour {
     public PlayerController squarePlayer;
 
     private Vector3 lastSquarePosition;
-    private float distanceToMove;
+    private float distanceToMove, brightTime;
     Camera cam;
 
 	void Awake() {
@@ -16,17 +16,26 @@ public class CameraController : MonoBehaviour {
         cam = GetComponent<Camera>();
         cam.clearFlags = CameraClearFlags.SolidColor;
         cam.backgroundColor = Color.white;
+        brightTime = 0;
     }
 	
     //camera tracks player movement on x axis
 	void Update()
     {
+        //update the time
+        brightTime += Time.deltaTime;
+
         distanceToMove = squarePlayer.transform.position.x - lastSquarePosition.x;
         transform.position = new Vector3(transform.position.x + distanceToMove, transform.position.y, transform.position.z);
         lastSquarePosition = squarePlayer.transform.position;
 
         //fade the background colour from white to black
-        float t = Mathf.Lerp(Time.time, 3, 0)/30;
+        float t = Mathf.Lerp(brightTime, 3, 0)/30;
         cam.backgroundColor = Color.Lerp(Color.white, Color.black, t);
+    }
+
+    public void RestartBrightness()
+    {
+        brightTime = 0;
     }
 }
