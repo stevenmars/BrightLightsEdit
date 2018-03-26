@@ -22,8 +22,12 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (thePlayer.playerColour.material.color == Color.black)
+        {
+            print("GAME OVER");
+        }
+
+    }
 
     //calls co-routine for restarting game
     public void Restart()
