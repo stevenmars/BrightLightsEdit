@@ -353,6 +353,7 @@ MonoBehaviour:
     m_Bits: 256
   theGameManager: {fileID: 1299382275}
   theCamera: {fileID: 31759159}
+  theBulb: {fileID: 1311708813}
   playerColour: {fileID: 0}
 --- !u!1 &325198361
 GameObject:
@@ -474,6 +475,10 @@ Prefab:
     - target: {fileID: 4842075482922434, guid: e945ae150ceca5e4a9165603145b6d72, type: 2}
       propertyPath: m_LocalScale.x
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307556047567624, guid: e945ae150ceca5e4a9165603145b6d72, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114681898290559392, guid: e945ae150ceca5e4a9165603145b6d72, type: 2}
@@ -607,9 +612,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1311708812}
   - component: {fileID: 1311708811}
+  - component: {fileID: 1311708815}
+  - component: {fileID: 1311708813}
   m_Layer: 0
   m_Name: Lightbulb
-  m_TagString: Untagged
+  m_TagString: Lightbulb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -671,6 +678,44 @@ Transform:
   m_Father: {fileID: 31759158}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1311708813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1311708810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351a2aa359817944ea207011817ca079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theCamera: {fileID: 31759159}
+  thePlayer: {fileID: 214328153}
+--- !u!61 &1311708815
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1311708810}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.3, y: 6}
+    newSize: {x: 3.3, y: 6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.7, y: 6.4}
+  m_EdgeRadius: 0
 --- !u!1 &1391935940
 GameObject:
   m_ObjectHideFlags: 0

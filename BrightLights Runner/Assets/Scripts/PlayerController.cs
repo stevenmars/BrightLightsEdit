@@ -14,12 +14,14 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     public GameManager theGameManager;
     public CameraController theCamera;
+    public LightbulbController theBulb;
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
     private Quaternion targetRotation;
     public Renderer playerColour;
-    private float brightTime;
+    private float brightTime, bulbCounter;
+    private bool isLightbulbPress;
 
     void Awake()
     {
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
         grounded = false;
         targetRotation = transform.rotation;
         brightTime = 0;
+        bulbCounter = 0;
     }
 
     void Update()
@@ -39,11 +42,19 @@ public class PlayerController : MonoBehaviour
         //grounded check
         grounded = Physics2D.IsTouchingLayers(cldr2d, whatIsGround);
 
-        //jump check
         if (Input.touchCount > 0)
         {
-            if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if jump is pressed AND player on the ground
+            //lightbulb button check
+            Vector3 lightbulbPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            Vector2 touchPos = new Vector2(lightbulbPos.x, lightbulbPos.y);
+            if (theBulb.GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
+            {
+                theCamera.RestartBrightness();
+            }
+            else if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if jump is pressed AND player on the ground
+            { 
                 jump = true;
+            }
         }
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
     }
@@ -77,8 +88,7 @@ public class PlayerController : MonoBehaviour
 
             //change player colour
             theCamera.ChangePlayerColour();
-
-            Destroy(other.gameObject, 0.2f);
+            Destroy(other.gameObject, 0.2f); //removes the obstacle
         }
     }
 }

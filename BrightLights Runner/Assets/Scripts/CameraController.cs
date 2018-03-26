@@ -43,5 +43,6 @@ public class CameraController : MonoBehaviour {
     public void RestartBrightness()
     {
         brightTime = 0;
+        squarePlayer.playerColour.material.color = Color.Lerp(Color.white, Color.black, t);
     }
 }
