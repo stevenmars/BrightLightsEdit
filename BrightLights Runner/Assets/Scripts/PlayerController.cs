@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         grounded = false;
         targetRotation = transform.rotation;
         brightTime = 0;
-        bulbCounter = 0;
+        bulbCounter = 3;
     }
 
     void Update()
@@ -47,9 +47,16 @@ public class PlayerController : MonoBehaviour
             //lightbulb button check
             Vector3 lightbulbPos = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
             Vector2 touchPos = new Vector2(lightbulbPos.x, lightbulbPos.y);
-            if (theBulb.GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
+            if (theBulb.GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos) && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 theCamera.RestartBrightness();
+                bulbCounter = bulbCounter - 1;
+
+                //player only gets 3 bulbs
+                if (bulbCounter <= 0)
+                {
+                    theBulb.gameObject.SetActive(false);
+                }
             }
             else if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if jump is pressed AND player on the ground
             { 
