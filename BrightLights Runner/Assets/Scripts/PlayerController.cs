@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
+    private Animator myAnimator;
     private Quaternion targetRotation;
     public Renderer playerColour;
     private float brightTime, bulbCounter;
@@ -27,8 +28,9 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         cldr2d = GetComponent<Collider2D>();
+        myAnimator = GetComponent<Animator>();
         playerColour = gameObject.GetComponent<Renderer>();
-        grounded = false;
+        //grounded = false;
         targetRotation = transform.rotation;
         brightTime = 0;
         bulbCounter = 3;
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
         //grounded check
         grounded = Physics2D.IsTouchingLayers(cldr2d, whatIsGround);
+        print(grounded);
 
         if (Input.touchCount > 0)
         {
@@ -59,11 +62,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
             else if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if jump is pressed AND player on the ground
-            { 
+            {
                 jump = true;
             }
         }
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
+        //front flip animation
+        myAnimator.SetBool("Grounded", grounded);
     }
 
     //Player movement physics
@@ -74,7 +78,6 @@ public class PlayerController : MonoBehaviour
         if (jump)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce));
-            StartCoroutine("Flip");//BUG: This doesnt flip you forward always, on even jumps you backflip -> animate instead
             jump = false;
         }
     }
