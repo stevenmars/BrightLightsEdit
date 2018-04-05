@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
         if (thePlayer.playerColour.material.color == Color.black)
         {
             print("GAME OVER");
+            Application.Quit(); //definitely just a placeholder here
         }
 
     }
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour {
         StartCoroutine("RestartCo");
     }
 
-    //resets game
+    //restarts game
     public IEnumerator RestartCo()
     {
         thePlayer.gameObject.SetActive(false);

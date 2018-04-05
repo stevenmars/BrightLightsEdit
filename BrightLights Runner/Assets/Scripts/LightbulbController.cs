@@ -12,9 +12,8 @@ public class LightbulbController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         lightCount = 0;
-	}
+    }
 
-    // If the player presses the lightbulb, reset the background and player brightness
     void Update()
     {
         
