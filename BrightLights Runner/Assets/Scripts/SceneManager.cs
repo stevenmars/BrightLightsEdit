@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+//using UnityEditor.SceneManagement; //this is part of why it breaks
 
 public class SceneManager : MonoBehaviour {
 
@@ -14,7 +14,7 @@ public class SceneManager : MonoBehaviour {
 
     public void LoadScene()
     {
-        EditorSceneManager.LoadScene(sceneName);
+        Application.LoadLevel(sceneName); //deprecated but the new version breks everything, fix if we have time
     }
 
     public void QuitGame()

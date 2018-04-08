@@ -1,5 +1,6 @@
 Android
 SceneListBegin?
+Assets/Scenes/Main Menu.unity
 Assets/Scenes/Game.unity
 SceneListEnd?
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -116,6 +117,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
+63476c3cd723e567416f94104be571f7 Assembly-CSharp.dll:.SceneManager
 ea8e8f8f690e4aad7937a1aff51f5684 Assembly-CSharp.dll:.CameraController
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -138,8 +140,8 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 d37ac0f8791aecd94cc5d9c6fbe75f97 Assembly-CSharp.dll:.GroundGenerator
 f822d4a2ed2b3dbef44e2cb3629f6663 Assembly-CSharp.dll:.GroundDestroyer
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
-7aa8685a2f4969061845cd192f24c8f8 Assembly-CSharp.dll:.PlayerController
-34a950155be5721cf83e153b579f5ff1 Assembly-CSharp.dll:.GameManager
+1105809da906b77929230f93ebc8ae91 Assembly-CSharp.dll:.PlayerController
+c361c43c6acd9c128bf3ffd3b6abbf47 Assembly-CSharp.dll:.GameManager
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
