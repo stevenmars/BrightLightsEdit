@@ -19,11 +19,12 @@ public class PlayerController : MonoBehaviour
     public Renderer playerColour;
     public Vector3 playerPos;
     public Text bulbText;
+    public int bulbCounter;
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
     private Animator myAnimator;
-    private float brightTime, bulbCounter;
+    private float brightTime;
 
     void Awake()
     {
@@ -95,8 +96,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void SetBulbText()
+    public void SetBulbText()
     {
         bulbText.text = "x" + bulbCounter.ToString();
+        theBulb.gameObject.SetActive(true);
+        bulbText.gameObject.SetActive(true);
     }
 }

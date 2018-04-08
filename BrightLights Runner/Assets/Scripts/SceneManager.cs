@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class SceneManager : MonoBehaviour {
 
     public string sceneName;
 
-    public void PlayGame()
+    public void RestartGame()
+    {
+        FindObjectOfType<GameManager>().Reset();
+    }
+
+    public void LoadScene()
     {
         EditorSceneManager.LoadScene(sceneName);
     }

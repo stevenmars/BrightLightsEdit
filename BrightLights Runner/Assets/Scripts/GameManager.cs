@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
     public PlayerController thePlayer;
     public ObstacleGenerator theObstacle;
     public CameraController theCamera;
+    public SceneManager theSceneManager;
 
     private Vector3 groundStartPoint, obstacleStartPoint;
     private Vector3 playerStartPoint;
@@ -24,28 +25,28 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         if (thePlayer.playerColour.material.color == Color.black)
         {
-            print("GAME OVER");
-            Application.Quit(); //definitely just a placeholder here
-        }
+            //print("GAME OVER");
+            thePlayer.gameObject.SetActive(false);
 
+            theSceneManager.gameObject.SetActive(true);
+        }
     }
 
     //calls co-routine for restarting game
     public void Restart()
     {
-        StartCoroutine("RestartCo");
+        //StartCoroutine("RestartCo");
+        
     }
 
-    //restarts game
-    public IEnumerator RestartCo()
+    public void Reset()
     {
-        thePlayer.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        theSceneManager.gameObject.SetActive(false);
 
         //delete obstacles and ground from previous run
         groundList = FindObjectsOfType<GroundDestroyer>();
         obstacleList = FindObjectsOfType<ObstacleDestroyer>();
-        for (int i=0; i<groundList.Length; i++)
+        for (int i = 0; i < groundList.Length; i++)
         {
             Destroy(groundList[i].gameObject);
         }
@@ -59,6 +60,24 @@ public class GameManager : MonoBehaviour {
         GroundGenerator.position = groundStartPoint;
         ObstacleGenerator.position = obstacleStartPoint;
 
+        //reset player and background brightness
+        theCamera.RestartBrightness();
+        theCamera.ChangePlayerColour();
+
+        //reset lightbulbs
+        thePlayer.bulbCounter = 3;
+        thePlayer.SetBulbText();
+
+        //show the player again
         thePlayer.gameObject.SetActive(true);
     }
+
+    //restarts game
+    /*public IEnumerator RestartCo()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+
+        
+    }*/
 }
