@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Controls player movement
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public LightbulbController theBulb;
     public Renderer playerColour;
     public Vector3 playerPos;
+    public Text bulbText;
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         playerColour = gameObject.GetComponent<Renderer>();
         brightTime = 0;
         bulbCounter = 3;
+        SetBulbText();
     }
 
     void Update()
@@ -40,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
         //grounded check
         grounded = Physics2D.IsTouchingLayers(cldr2d, whatIsGround);
-        print(grounded);
 
         if (Input.touchCount > 0)
         {
@@ -51,11 +53,13 @@ public class PlayerController : MonoBehaviour
             {
                 theCamera.RestartBrightness(); //reset background to white
                 bulbCounter = bulbCounter - 1;
+                SetBulbText(); //update UI bulbCounter
 
                 //player only gets 3 bulbs
                 if (bulbCounter <= 0)
                 {
                     theBulb.gameObject.SetActive(false);
+                    bulbText.gameObject.SetActive(false);
                 }
             }
             else if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if player is grounded and jump is pressed
@@ -89,5 +93,10 @@ public class PlayerController : MonoBehaviour
             theCamera.ChangePlayerColour(); //sets player colour to current background colour
             Destroy(other.gameObject, 0.2f); //removes the obstacle
         }
+    }
+
+    void SetBulbText()
+    {
+        bulbText.text = "x" + bulbCounter.ToString();
     }
 }
