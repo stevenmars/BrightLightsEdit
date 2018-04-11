@@ -20,12 +20,11 @@ public class PlayerController : MonoBehaviour
     public Renderer playerColour;
     public Vector3 playerPos;
     public Text bulbText, timerText;
-    public int bulbCounter;
+    public int bulbCounter, hitCounter;
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
     private Animator myAnimator;
-    private float brightTime;
 
     void Awake()
     {
@@ -33,23 +32,23 @@ public class PlayerController : MonoBehaviour
         cldr2d = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         playerColour = gameObject.GetComponent<Renderer>();
-        brightTime = 0;
         timer = 0;
         bulbCounter = 3;
+        hitCounter = 0;
         SetBulbText();
     }
 
     void Update()
     {
-        //update the time
-        brightTime += Time.deltaTime;
-
         //update the timer
         timer += Time.deltaTime;
-        timerText.text = timer.ToString("F2");
+        timerText.text = timer.ToString("F2"); //seconds and miliseconds
 
         //grounded check
         grounded = Physics2D.IsTouchingLayers(cldr2d, whatIsGround);
+
+        //move forward
+        rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
 
         if (Input.touchCount > 0)
         {
@@ -81,7 +80,6 @@ public class PlayerController : MonoBehaviour
     //Called after Update()
     void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
         //jump and rotate
         if (jump)
         {
@@ -95,6 +93,7 @@ public class PlayerController : MonoBehaviour
     { 
         if (other.gameObject.tag == "Obstacle") //maybe add animation for fading out
         {
+            hitCounter++;
             Handheld.Vibrate(); //vibrate the device
             theCamera.shakeTime = 0.2f; //screenshake
             theCamera.ChangePlayerColour(); //sets player colour to current background colour

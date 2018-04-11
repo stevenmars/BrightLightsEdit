@@ -14,7 +14,7 @@ public class SceneManager : MonoBehaviour {
 
     public void LoadScene()
     {
-        Application.LoadLevel(sceneName); //deprecated but the new version breks everything, fix if we have time
+        Application.LoadLevel(sceneName); //deprecated but the new version breaks everything, fix if we have time
     }
 
     public void QuitGame()

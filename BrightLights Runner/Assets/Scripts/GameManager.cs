@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public ObstacleGenerator theObstacle;
     public CameraController theCamera;
     public SceneManager theSceneManager;
+    public Text hitText, finalTimeText;
 
     private Vector3 groundStartPoint, obstacleStartPoint;
     private Vector3 playerStartPoint;
@@ -25,18 +27,20 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         if (thePlayer.playerColour.material.color == Color.black)
         {
-            //print("GAME OVER");
-            thePlayer.gameObject.SetActive(false);
+            finalTimeText.text = "You made it " + thePlayer.timer.ToString("F2") +"s";
 
+            if (thePlayer.hitCounter == 1)
+            {
+                hitText.text = thePlayer.hitCounter.ToString() + " Obstacle Hit";
+            }
+            else
+            {
+                hitText.text = thePlayer.hitCounter.ToString() + " Obstacles Hit";
+            }
+
+            thePlayer.gameObject.SetActive(false);
             theSceneManager.gameObject.SetActive(true);
         }
-    }
-
-    //calls co-routine for restarting game
-    public void Restart()
-    {
-        //StartCoroutine("RestartCo");
-        
     }
 
     public void Reset()
@@ -67,6 +71,12 @@ public class GameManager : MonoBehaviour {
         //reset lightbulbs
         thePlayer.bulbCounter = 3;
         thePlayer.SetBulbText();
+
+        //reset hitcounter
+        thePlayer.hitCounter = 0;
+
+        //reset timer
+        thePlayer.timer = 0;
 
         //show the player again
         thePlayer.gameObject.SetActive(true);
