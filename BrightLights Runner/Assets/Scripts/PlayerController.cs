@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 5f;
     public float jumpForce = 700f;
+    public float timer;
     public bool grounded;
     public LayerMask whatIsGround;
     public GameManager theGameManager;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public LightbulbController theBulb;
     public Renderer playerColour;
     public Vector3 playerPos;
-    public Text bulbText;
+    public Text bulbText, timerText;
     public int bulbCounter;
 
     private Rigidbody2D rb2d;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         playerColour = gameObject.GetComponent<Renderer>();
         brightTime = 0;
+        timer = 0;
         bulbCounter = 3;
         SetBulbText();
     }
@@ -41,6 +43,10 @@ public class PlayerController : MonoBehaviour
     {
         //update the time
         brightTime += Time.deltaTime;
+
+        //update the timer
+        timer += Time.deltaTime;
+        timerText.text = timer.ToString("F2");
 
         //grounded check
         grounded = Physics2D.IsTouchingLayers(cldr2d, whatIsGround);
