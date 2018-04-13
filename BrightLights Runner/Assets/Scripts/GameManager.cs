@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public ObstacleGenerator theObstacle;
     public CameraController theCamera;
     public SceneManager theSceneManager;
+    public LifeController theLives;
     public Text hitText, finalTimeText;
 
     private Vector3 groundStartPoint, obstacleStartPoint;
@@ -72,11 +73,17 @@ public class GameManager : MonoBehaviour {
         thePlayer.bulbCounter = 3;
         thePlayer.SetBulbText();
 
-        //reset hitcounter
+        //reset hitcounter and lives
         thePlayer.hitCounter = 0;
+        thePlayer.lifeCounter = 3;
+        thePlayer.SetLifeText();
 
         //reset timer
         thePlayer.timer = 0;
+
+        //hide lifecounter
+        thePlayer.lifeText.gameObject.SetActive(false);
+        theLives.gameObject.SetActive(false);
 
         //show the player again
         thePlayer.gameObject.SetActive(true);

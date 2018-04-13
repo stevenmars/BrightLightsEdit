@@ -91,7 +91,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 9ca6347af5ceb6b0d1c105af31b6722e UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-d493a1e05423c24738d9536c53f15dad Assembly-CSharp.dll:.LightbulbController
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LightbulbController
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -140,8 +140,8 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 d37ac0f8791aecd94cc5d9c6fbe75f97 Assembly-CSharp.dll:.GroundGenerator
 f822d4a2ed2b3dbef44e2cb3629f6663 Assembly-CSharp.dll:.GroundDestroyer
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
-1105809da906b77929230f93ebc8ae91 Assembly-CSharp.dll:.PlayerController
-c361c43c6acd9c128bf3ffd3b6abbf47 Assembly-CSharp.dll:.GameManager
+494356e14a1476d9bda958dea48ff742 Assembly-CSharp.dll:.PlayerController
+321a93b04598eff8e082a571db70caa9 Assembly-CSharp.dll:.GameManager
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -149,3 +149,4 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 ee8fbf69feb7b0dd8220c4888af2cbd6 Assembly-CSharp.dll:.ObstacleGenerator
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.LifeController

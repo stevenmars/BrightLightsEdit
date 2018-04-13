@@ -17,10 +17,11 @@ public class PlayerController : MonoBehaviour
     public GameManager theGameManager;
     public CameraController theCamera;
     public LightbulbController theBulb;
+    public LifeController theLives;
     public Renderer playerColour;
     public Vector3 playerPos;
-    public Text bulbText, timerText;
-    public int bulbCounter, hitCounter;
+    public Text bulbText, lifeText, timerText;
+    public int bulbCounter, hitCounter, lifeCounter;
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
@@ -34,7 +35,9 @@ public class PlayerController : MonoBehaviour
         playerColour = gameObject.GetComponent<Renderer>();
         timer = 0;
         bulbCounter = 3;
+        lifeCounter = 3;
         hitCounter = 0;
+        SetLifeText();
         SetBulbText();
     }
 
@@ -66,6 +69,8 @@ public class PlayerController : MonoBehaviour
                 {
                     theBulb.gameObject.SetActive(false);
                     bulbText.gameObject.SetActive(false);
+                    theLives.gameObject.SetActive(true);
+                    lifeText.gameObject.SetActive(true);
                 }
             }
             else if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if player is grounded and jump is pressed
@@ -93,11 +98,25 @@ public class PlayerController : MonoBehaviour
     { 
         if (other.gameObject.tag == "Obstacle") //maybe add animation for fading out
         {
-            hitCounter++;
-            Handheld.Vibrate(); //vibrate the device
-            theCamera.shakeTime = 0.2f; //screenshake
-            theCamera.ChangePlayerColour(); //sets player colour to current background colour
-            Destroy(other.gameObject, 0.2f); //removes the obstacle
+            if (bulbCounter <= 0)
+            {
+                lifeCounter--; //lose a life
+                SetLifeText();
+            }
+
+            if (lifeCounter <= 0)
+            {
+                playerColour.material.color = Color.black; //end game
+                hitCounter++;
+            }
+            else
+            {
+                hitCounter++;
+                Handheld.Vibrate(); //vibrate the device
+                theCamera.shakeTime = 0.2f; //screenshake
+                theCamera.ChangePlayerColour(); //sets player colour to current background colour
+                Destroy(other.gameObject, 0.2f); //removes the obstacle
+            }
         }
     }
 
@@ -106,5 +125,10 @@ public class PlayerController : MonoBehaviour
         bulbText.text = "x" + bulbCounter.ToString();
         theBulb.gameObject.SetActive(true);
         bulbText.gameObject.SetActive(true);
+    }
+
+    public void SetLifeText()
+    {
+        lifeText.text = "x" + lifeCounter.ToString();
     }
 }
