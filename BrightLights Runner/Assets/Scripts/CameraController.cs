@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour {
     public Transform cameraTransform;
     public float shakeTime, shakeIntensity, shakeCalmDown;
 
-    private Camera cam;
+    public Camera cam;
     private Vector3 lastSquarePosition, savedPos;
     private float distanceToMove, brightTime, t, savedPosx, savedPosy, savedPosz;
 

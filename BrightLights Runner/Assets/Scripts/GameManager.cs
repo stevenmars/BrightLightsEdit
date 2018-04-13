@@ -20,16 +20,10 @@ public class GameManager : MonoBehaviour {
     private GroundDestroyer[] groundList;
     private ObstacleDestroyer[] obstacleList;
 
-    //string message;
-    //string loadMessage = "working";
-    //string data;
-    //FileInfo file;
-
     // Use this for initialization
     void Start () {
         groundStartPoint = GroundGenerator.position;
         obstacleStartPoint = ObstacleGenerator.position;
-        //file = new FileInfo(Application.persistentDataPath + "\\" + "BrightLightsData.txt");
     }
 	
 	// Update is called once per frame
@@ -54,9 +48,6 @@ public class GameManager : MonoBehaviour {
 
     public void Reset()
     {
-        //save everything to file
-        SavePlayersData();
-
         theSceneManager.gameObject.SetActive(false);
 
         //delete obstacles and ground from previous run
@@ -100,28 +91,41 @@ public class GameManager : MonoBehaviour {
         thePlayer.gameObject.SetActive(true);
     }
 
-    void SavePlayersData()
+    public void SavePlayersData()
     {
+        //convert to strings
+        string participantID;
+        string hitCount = thePlayer.hitCounter.ToString();
+        string bulbCount = thePlayer.bulbCounter.ToString();
+        string lifeCount = thePlayer.lifeCounter.ToString();
+        string playTime = thePlayer.timer.ToString("F2") + "s";
+        string firstColour = ColorUtility.ToHtmlStringRGB(thePlayer.background1); //gives hex codes - easy to convert to RGB
+        string secondColour = ColorUtility.ToHtmlStringRGB(thePlayer.background2);
+        string thirdColour = ColorUtility.ToHtmlStringRGB(thePlayer.background3);
+        string firstTime = thePlayer.time1.ToString("F2") + "s";
+        string secondTime = thePlayer.time2.ToString("F2") + "s";
+        string thirdTime = thePlayer.time3.ToString("F2") + "s";
+
         using (StreamWriter writer = File.AppendText(Application.persistentDataPath + "\\" + "BrightLightsData.txt"))
         {
-            WriteData(thePlayer.hitCounter.ToString(), writer);
+            WriteData(hitCount, bulbCount, lifeCount, playTime, firstTime, firstColour, secondTime, secondColour, thirdTime, thirdColour, writer);
         }
-
-
-        /*
-        WriteData("Participant ID: ");
-        WriteData("Hit Count: " + thePlayer.hitCounter.ToString());
-        WriteData("Remaining Lightbulbs: " + thePlayer.bulbCounter.ToString());
-        WriteData("Remaining Lives: " + thePlayer.lifeCounter.ToString());
-        */
     }
-
     
     //write relevant data to file
-    public static void WriteData(string data, TextWriter writer)
+    public static void WriteData(string hitCount, string bulbCount, string lifeCount, string playTime, string firstTime, string firstColour, string secondTime, string secondColour, string thirdTime, string thirdColour, TextWriter writer)
     {
-        print(data);
-        writer.WriteLine("Hit Count: " + data);
+        writer.WriteLine("Participant ID: ");
+        writer.WriteLine("Obstacles Hit: " + hitCount);
+        writer.WriteLine("Lightbulbs Remaining: " + bulbCount);
+        writer.WriteLine("Lives Remaining: " + lifeCount);
+        writer.WriteLine("Run Length: " + playTime);
+        writer.WriteLine("Time and Background Colour when Lightbulb Pressed:");
+        writer.WriteLine("First: " + firstTime + ", " + firstColour);
+        writer.WriteLine("Second: " + secondTime + ", " + secondColour);
+        writer.WriteLine("Third: " + thirdTime + ", " + thirdColour);
+        writer.WriteLine();
         writer.WriteLine("----------------------");
+        writer.WriteLine();
     }
 }

@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 5f;
     public float jumpForce = 700f;
-    public float timer;
+    public float timer, time1, time2, time3;
     public bool grounded;
     public LayerMask whatIsGround;
     public GameManager theGameManager;
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 playerPos;
     public Text bulbText, lifeText, timerText;
     public int bulbCounter, hitCounter, lifeCounter;
+    public Color background1, background2, background3; //store background colours when lightbulbs are hit
 
     private Rigidbody2D rb2d;
     private Collider2D cldr2d;
@@ -60,6 +61,23 @@ public class PlayerController : MonoBehaviour
             Vector2 touchPos = new Vector2(lightbulbPos.x, lightbulbPos.y);
             if (theBulb.GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos) && Input.GetTouch(0).phase == TouchPhase.Began)
             {
+                //get the current background colour and store it in a variable
+                if (bulbCounter == 3)
+                {
+                    time1 = timer;
+                    background1 = theCamera.cam.backgroundColor;
+                }
+                else if (bulbCounter == 2)
+                {
+                    time2 = timer;
+                    background2 = theCamera.cam.backgroundColor;
+                }
+                else if (bulbCounter == 1)
+                {
+                    time3 = timer;
+                    background3 = theCamera.cam.backgroundColor;
+                }
+
                 theCamera.RestartBrightness(); //reset background to white
                 bulbCounter = bulbCounter - 1;
                 SetBulbText(); //update UI bulbCounter
