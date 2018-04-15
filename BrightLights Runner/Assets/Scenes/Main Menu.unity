@@ -845,6 +845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Game
+  participantID: 
+  inputField: {fileID: 2136466193}
 --- !u!114 &2013296128
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -94,7 +94,8 @@ public class GameManager : MonoBehaviour {
     public void SavePlayersData()
     {
         //convert to strings
-        string participantID;
+        string partID = ParticipantIDController.participantID; //global
+        print(partID);
         string hitCount = thePlayer.hitCounter.ToString();
         string bulbCount = thePlayer.bulbCounter.ToString();
         string lifeCount = thePlayer.lifeCounter.ToString();
@@ -108,14 +109,14 @@ public class GameManager : MonoBehaviour {
 
         using (StreamWriter writer = File.AppendText(Application.persistentDataPath + "\\" + "BrightLightsData.txt"))
         {
-            WriteData(hitCount, bulbCount, lifeCount, playTime, firstTime, firstColour, secondTime, secondColour, thirdTime, thirdColour, writer);
+            WriteData(partID, hitCount, bulbCount, lifeCount, playTime, firstTime, firstColour, secondTime, secondColour, thirdTime, thirdColour, writer);
         }
     }
     
     //write relevant data to file
-    public static void WriteData(string hitCount, string bulbCount, string lifeCount, string playTime, string firstTime, string firstColour, string secondTime, string secondColour, string thirdTime, string thirdColour, TextWriter writer)
+    public static void WriteData(string partID, string hitCount, string bulbCount, string lifeCount, string playTime, string firstTime, string firstColour, string secondTime, string secondColour, string thirdTime, string thirdColour, TextWriter writer)
     {
-        writer.WriteLine("Participant ID: ");
+        writer.WriteLine("Participant ID: " + partID);
         writer.WriteLine("Obstacles Hit: " + hitCount);
         writer.WriteLine("Lightbulbs Remaining: " + bulbCount);
         writer.WriteLine("Lives Remaining: " + lifeCount);

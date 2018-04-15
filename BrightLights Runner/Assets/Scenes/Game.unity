@@ -217,6 +217,7 @@ MonoBehaviour:
   shakeTime: 0
   shakeIntensity: 0
   shakeCalmDown: 0
+  cam: {fileID: 0}
 --- !u!1 &66960137
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +326,7 @@ MonoBehaviour:
   theCamera: {fileID: 31759159}
   theSceneManager: {fileID: 1243521799}
   theLives: {fileID: 2077374120}
+  theID: {fileID: 0}
   hitText: {fileID: 608030344}
   finalTimeText: {fileID: 1508941349}
 --- !u!114 &66960144
@@ -547,6 +549,9 @@ MonoBehaviour:
   moveSpeed: 10
   jumpForce: 700
   timer: 0
+  time1: 0
+  time2: 0
+  time3: 0
   grounded: 0
   whatIsGround:
     serializedVersion: 2
@@ -563,6 +568,9 @@ MonoBehaviour:
   bulbCounter: 0
   hitCounter: 0
   lifeCounter: 0
+  background1: {r: 0, g: 0, b: 0, a: 0}
+  background2: {r: 0, g: 0, b: 0, a: 0}
+  background3: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &214328154
 Animator:
   serializedVersion: 3
@@ -1490,6 +1498,7 @@ MonoBehaviour:
   theCamera: {fileID: 31759159}
   theSceneManager: {fileID: 1243521799}
   theLives: {fileID: 2077374120}
+  theID: {fileID: 0}
   hitText: {fileID: 608030344}
   finalTimeText: {fileID: 1508941349}
 --- !u!4 &1299382276
