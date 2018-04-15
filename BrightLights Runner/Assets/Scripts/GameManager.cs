@@ -95,7 +95,6 @@ public class GameManager : MonoBehaviour {
     {
         //convert to strings
         string partID = ParticipantIDController.participantID; //global
-        print(partID);
         string hitCount = thePlayer.hitCounter.ToString();
         string bulbCount = thePlayer.bulbCounter.ToString();
         string lifeCount = thePlayer.lifeCounter.ToString();

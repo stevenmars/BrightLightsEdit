@@ -326,7 +326,6 @@ MonoBehaviour:
   theCamera: {fileID: 31759159}
   theSceneManager: {fileID: 1243521799}
   theLives: {fileID: 2077374120}
-  theID: {fileID: 0}
   hitText: {fileID: 608030344}
   finalTimeText: {fileID: 1508941349}
 --- !u!114 &66960144
@@ -720,7 +719,7 @@ RectTransform:
   m_Children:
   - {fileID: 1061765351}
   m_Father: {fileID: 1243521798}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1246,7 +1245,7 @@ RectTransform:
   m_Children:
   - {fileID: 334758226}
   m_Father: {fileID: 1243521798}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1441,9 +1440,9 @@ RectTransform:
   - {fileID: 1905800303}
   - {fileID: 1508941348}
   - {fileID: 608030343}
+  - {fileID: 1718403764}
   - {fileID: 1077087916}
   - {fileID: 346444010}
-  - {fileID: 1718403764}
   m_Father: {fileID: 66960141}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1498,7 +1497,6 @@ MonoBehaviour:
   theCamera: {fileID: 31759159}
   theSceneManager: {fileID: 1243521799}
   theLives: {fileID: 2077374120}
-  theID: {fileID: 0}
   hitText: {fileID: 608030344}
   finalTimeText: {fileID: 1508941349}
 --- !u!4 &1299382276
@@ -1612,7 +1610,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.61545086, y: -1.0806842}
+  m_Offset: {x: 0.3367586, y: 0.13140345}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1623,7 +1621,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.1773777, y: 10.339982}
+  m_Size: {x: 10.693232, y: 12.764157}
   m_EdgeRadius: 0
 --- !u!1 &1391935940
 GameObject:
@@ -1782,7 +1780,7 @@ GameObject:
   - component: {fileID: 1718403765}
   m_Layer: 5
   m_Name: SaveDataButton
-  m_TagString: Untagged
+  m_TagString: SaveButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1799,7 +1797,7 @@ RectTransform:
   m_Children:
   - {fileID: 671135127}
   m_Father: {fileID: 1243521798}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

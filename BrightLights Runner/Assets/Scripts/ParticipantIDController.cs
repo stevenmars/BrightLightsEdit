@@ -11,6 +11,5 @@ public class ParticipantIDController : MonoBehaviour
     public void SaveID()
     {
         participantID = inputField.GetComponent<InputField>().text;
-        print(participantID);
     }
 }

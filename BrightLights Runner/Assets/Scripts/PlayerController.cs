@@ -124,13 +124,14 @@ public class PlayerController : MonoBehaviour
 
             if (lifeCounter <= 0)
             {
+                Handheld.Vibrate(); //vibrate the device
                 playerColour.material.color = Color.black; //end game
                 hitCounter++;
             }
             else
             {
                 hitCounter++;
-                Handheld.Vibrate(); //vibrate the device
+                Handheld.Vibrate();
                 theCamera.shakeTime = 0.2f; //screenshake
                 theCamera.ChangePlayerColour(); //sets player colour to current background colour
                 Destroy(other.gameObject, 0.2f); //removes the obstacle
