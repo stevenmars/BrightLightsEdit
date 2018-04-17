@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour {
         {
             WriteData(partID, hitCount, bulbCount, lifeCount, playTime, firstTime, firstColour, secondTime, secondColour, thirdTime, thirdColour, writer);
         }
+
+        Handheld.Vibrate();
     }
     
     //write relevant data to file

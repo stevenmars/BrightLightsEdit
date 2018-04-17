@@ -42,10 +42,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 679, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MinSize: {x: 683, y: 492}
+  m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 11
+  controlID: 73
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -207,10 +207,10 @@ MonoBehaviour:
     y: 0
     width: 1495
     height: 947
-  m_MinSize: {x: 404, y: 492}
+  m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 12
+  controlID: 74
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -231,10 +231,10 @@ MonoBehaviour:
     y: 0
     width: 1495
     height: 600
-  m_MinSize: {x: 404, y: 221}
-  m_MaxSize: {x: 8004, y: 4021}
+  m_MinSize: {x: 406, y: 221}
+  m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 13
+  controlID: 75
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -468,8 +468,8 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 692
+    x: -32000
+    y: -31351
     width: 1493
     height: 326
   m_PersistentViewDataDictionary: {fileID: 0}
@@ -485,19 +485,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 60
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: 60
   m_LastProjectPath: C:\Users\User\Documents\GitHub\BrightLights\BrightLights Runner
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 32280000
-    m_LastClickedID: 10290
-    m_ExpandedIDs: 0000000074270000fe2700007a29000000ca9a3bffffff7f
+    m_SelectedIDs: ec270000
+    m_LastClickedID: 10220
+    m_ExpandedIDs: 0000000074270000fe270000e828000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -525,7 +525,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000074270000fe2700007a290000
+    m_ExpandedIDs: 0000000074270000fe270000e8280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -602,8 +602,8 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 1497
-    y: 92
+    x: -30503
+    y: -31951
     width: 423
     height: 926
   m_PersistentViewDataDictionary: {fileID: 0}
@@ -636,8 +636,8 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 92
+    x: -32000
+    y: -31951
     width: 483
     height: 579
   m_PersistentViewDataDictionary: {fileID: 0}
@@ -645,7 +645,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: f2e6feffb4e7feffeae8fefff2e8fefffae8feff18f3feff9efbffff000000005428000060280000d2280000
+    m_ExpandedIDs: 26ecfffff6ecffff0aeeffff12eeffff1eeeffff68f8ffff9efbffff000000000629000078290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -664,7 +664,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
   m_ExpandedScenes:
-  - Participant ID
+  - Game
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -767,8 +767,8 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
-    x: 487
-    y: 92
+    x: -31513
+    y: -31951
     width: 1006
     height: 579
   m_PersistentViewDataDictionary: {fileID: 0}
