@@ -1,0 +1,44 @@
+{
+  "name": "com.unity.ads",
+  "displayName": "Advertisement Legacy",
+  "version": "4.4.1",
+  "unity": "2018.4",
+  "unityRelease": "18f1",
+  "description": "Connect your game to the Unity Ads Network for iOS and Android to quickly and effectively monetize your games.\n\n\nNOTE: The Advertisement Legacy package will soon be unsupported.\n\nIf you are installing this package for the first time, we recommend that you instead use Advertisement with Mediation to ensure continued access to the latest Unity Ads features.\n\nUse Advertisement with Mediation to connect your game to additional ad networks beyond the Unity Ads Network. Before you install the Advertisement with Mediation package, you must uninstall the Advertisement Legacy package and then update your project code.\n\nPlease reference the Mediation migration guide in our technical documentation (linked above).",
+  "_upm": {
+    "gameService": {
+      "groupIndex": 4,
+      "groupName": "Monetization",
+      "genericDashboardUrl": "https://unityads.unity3d.com/help/index",
+      "projectDashboardUrl": "https://dashboard.unity3d.com/organizations/{0}/projects/{1}/monetization/about",
+      "projectDashboardUrlType": "OrganizationKeyAndProjectGuid",
+      "configurePath": "Project/Services/Ads"
+    },
+    "supportedPlatforms": [
+      "Android",
+      "iOS"
+    ]
+  },
+  "keywords": [
+    "ads",
+    "unity"
+  ],
+  "dependencies": {
+    "com.unity.ugui": "1.0.0"
+  },
+  "upmCi": {
+    "footprint": "0500bb860b9f597bf0ea80e668e492451dce9940"
+  },
+  "repository": {
+    "url": "https://github.com/Unity-Technologies/unity-ads-sdk.git",
+    "type": "git",
+    "revision": "6c93f3bb6e6e708c596fac8bc838bbca2b88c20c"
+  },
+  "samples": [
+    {
+      "displayName": "UnityAds Example App",
+      "description": "Contains sample scene and scripts for loading and showing ads with the Unity Ads SDK",
+      "path": "Samples~"
+    }
+  ]
+}
