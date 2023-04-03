@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public PlayerController thePlayer;
     public ObstacleGenerator theObstacle;
     public CameraController theCamera;
-    public SceneManager theSceneManager;
+    public SceneLoader theSceneLoader; //changed from SceneManager as it clashed with Unity class
     public LifeController theLives;
     public Text hitText, finalTimeText;
 
@@ -22,8 +22,10 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Application.targetFrameRate = 60; //to fix low fps issue
         groundStartPoint = GroundGenerator.position;
         obstacleStartPoint = ObstacleGenerator.position;
+
     }
 	
 	// Update is called once per frame
@@ -42,13 +44,13 @@ public class GameManager : MonoBehaviour {
             }
 
             thePlayer.gameObject.SetActive(false);
-            theSceneManager.gameObject.SetActive(true);
+            theSceneLoader.gameObject.SetActive(true);
         }
     }
 
     public void Reset()
     {
-        theSceneManager.gameObject.SetActive(false);
+        theSceneLoader.gameObject.SetActive(false);
 
         //delete obstacles and ground from previous run
         groundList = FindObjectsOfType<GroundDestroyer>();
