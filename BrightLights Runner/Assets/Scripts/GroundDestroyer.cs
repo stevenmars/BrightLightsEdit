@@ -14,9 +14,16 @@ public class GroundDestroyer : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Player position: " + PlayerController.playerPosition + ", transform position: " + transform.position.x);
+       // Debug.Log(" transform position: " + transform.position.x);
+
+        Debug.Log(" transform position: " + transform.position.x + "Ground destruction point: " + groundDestructionPoint.transform.position.x);
         if (transform.position.x < groundDestructionPoint.transform.position.x)
         {
-            Destroy(gameObject); //destroy ground
+            Debug.Log("destroy ground");
+            //Destroy(gameObject); //destroy ground
+            gameObject.SetActive(false);
+
         }
     }
 }

@@ -57,11 +57,13 @@ public class GameManager : MonoBehaviour {
         obstacleList = FindObjectsOfType<ObstacleDestroyer>();
         for (int i = 0; i < groundList.Length; i++)
         {
-            Destroy(groundList[i].gameObject);
+            //Destroy(groundList[i].gameObject);
+            groundList[i].gameObject.SetActive(false);
         }
         for (int j = 0; j < obstacleList.Length; j++)
         {
-            Destroy(obstacleList[j].gameObject);
+            //Destroy(obstacleList[j].gameObject);
+            obstacleList[j].gameObject.SetActive(false);
         }
 
         //reset positions

@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
     private Collider2D cldr2d;
     private Animator myAnimator;
 
+    public static float playerPosition;
+    private float lastPositionUpdateTime = 0f;
+    private float positionUpdateInterval = 0.1f;
+
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -44,6 +48,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Time.time - lastPositionUpdateTime >= positionUpdateInterval)
+        {
+            playerPosition = transform.position.x;
+            lastPositionUpdateTime = Time.time;
+        }
+
         //update the timer
         timer += Time.deltaTime;
         timerText.text = timer.ToString("F2"); //seconds and miliseconds
@@ -134,9 +144,16 @@ public class PlayerController : MonoBehaviour
                 Handheld.Vibrate();
                 theCamera.shakeTime = 0.2f; //screenshake
                 theCamera.ChangePlayerColour(); //sets player colour to current background colour
-                Destroy(other.gameObject, 0.2f); //removes the obstacle
+                //Destroy(other.gameObject, 0.2f); //removes the obstacle
+                StartCoroutine(DeactivateAfterDelay(other.gameObject, 0.2f));
             }
         }
+    }
+
+    private IEnumerator DeactivateAfterDelay(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        obj.SetActive(false);
     }
 
     public void SetBulbText()

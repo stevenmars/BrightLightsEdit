@@ -15,9 +15,16 @@ public class ObstacleDestroyer : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("Player position: " + PlayerController.playerPosition + ", transform position: " + transform.position.x);
+        //Debug.Log(" transform position: " + transform.position.x);
+        Debug.Log(" transform position: " + transform.position.x + "Obstacle destruction point: " + obstacleDestructionPoint.transform.position.x);
+        
         if (transform.position.x < obstacleDestructionPoint.transform.position.x)
         {
-            Destroy(gameObject); //destroy obstacle
+            Debug.Log("destroy obstacle");
+            //Destroy(gameObject); //destroy obstacle
+            gameObject.SetActive(false);
         }
+        
     }
 }
