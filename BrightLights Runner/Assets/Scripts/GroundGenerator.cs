@@ -11,6 +11,9 @@ public class GroundGenerator : MonoBehaviour {
 
     private ObjectPool groundObjectPool;
 
+    public Material OrangeMaterial;
+    public bool useOrangeMaterial = false;
+
 
 
 
@@ -39,7 +42,25 @@ public class GroundGenerator : MonoBehaviour {
                 GameObject newGround = ObjectPool.Instance.GetPooledObject("Ground");
                 newGround.transform.position = transform.position;
                 newGround.transform.rotation = transform.rotation;
-                newGround.SetActive(true);
+
+
+
+
+            newGround.transform.SetParent(GameObject.Find("CompositeGround").transform);
+
+            SpriteRenderer groundSpriteRenderer = newGround.GetComponent<SpriteRenderer>();
+            if (useOrangeMaterial)
+            {
+                groundSpriteRenderer.material = OrangeMaterial;
+                //newGround.GetComponent<Renderer>().sharedMaterial = OrangeMaterial;
+            }
+            else
+            {
+                //newGround.GetComponent<Renderer>().sharedMaterial = blackMaterial;
+                groundSpriteRenderer.material = null; // Reset to default material
+            }
+
+            newGround.SetActive(true);
 
 
         }

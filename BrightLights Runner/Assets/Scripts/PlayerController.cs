@@ -48,11 +48,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Time.time - lastPositionUpdateTime >= positionUpdateInterval)
-        {
-            playerPosition = transform.position.x;
-            lastPositionUpdateTime = Time.time;
-        }
+       // if (Time.time - lastPositionUpdateTime >= positionUpdateInterval)
+       // {
+        //    playerPosition = transform.position.x;
+        //    lastPositionUpdateTime = Time.time;
+       // }
 
         //update the timer
         timer += Time.deltaTime;
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
         //move forward
         rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
+        //transform.position += Vector3.right * moveSpeed * Time.deltaTime;
 
         if (Input.touchCount > 0)
         {
@@ -113,6 +114,13 @@ public class PlayerController : MonoBehaviour
     //Called after Update()
     void FixedUpdate()
     {
+        // Make sure the player always moves forward
+        //if (rb2d.velocity.x <= 0)
+        //{
+           // rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
+       // }
+
+        
         //jump and rotate
         if (jump)
         {
