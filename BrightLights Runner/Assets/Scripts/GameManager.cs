@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public ObstacleGenerator theObstacle;
     public CameraController theCamera;
     public SceneLoader theSceneLoader; //changed from SceneManager as it clashed with Unity class
+    public ColorController theColor;
     public LifeController theLives;
     public Text hitText, finalTimeText;
 
@@ -20,18 +22,40 @@ public class GameManager : MonoBehaviour {
     private GroundDestroyer[] groundList;
     private ObstacleDestroyer[] obstacleList;
 
+    public static int gameOption;
+
+    private void Awake()
+    {
+        gameOption = UnityEngine.Random.Range(1, 4); // Generates a random number between 1 and 3
+        Debug.Log("GameOption Random No " + gameOption);
+        theCamera.SetGameOption(gameOption); // Pass the game option to the CameraController
+
+    }
+
     // Use this for initialization
     void Start () {
         Application.targetFrameRate = 60; //to fix low fps issue
         groundStartPoint = GroundGenerator.position;
         obstacleStartPoint = ObstacleGenerator.position;
+        
+
+        //gameOption = UnityEngine.Random.Range(1, 4); // Generates a random number between 1 and 3
+        //Debug.Log("GameOption Random No " + gameOption);
+        //theCamera.SetGameOption(gameOption); // Pass the game option to the CameraController
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (thePlayer.playerColour.material.color == Color.black)
+        //Debug.Log("GameOption Random No update " + gameOption);
+        Color playerColor = thePlayer.playerColour.material.color;
+
+        if ((playerColor == Color.black) || (playerColor == ColorController.blueYellowEnd) || (playerColor == ColorController.redGreenEnd))
         {
+            thePlayer.playerColour.material.color = Color.white;
+
+            Debug.Log("Whys is this happening");
+
             finalTimeText.text = "You made it " + thePlayer.timer.ToString("F2") +"s";
 
             if (thePlayer.hitCounter == 1)
@@ -43,9 +67,16 @@ public class GameManager : MonoBehaviour {
                 hitText.text = thePlayer.hitCounter.ToString() + " Obstacles Hit";
             }
 
+            
             thePlayer.gameObject.SetActive(false);
             theSceneLoader.gameObject.SetActive(true);
         }
+        
+    }
+
+    public int GetGameOption()
+    {
+        return gameOption;
     }
 
     public void Reset()
@@ -72,8 +103,8 @@ public class GameManager : MonoBehaviour {
         ObstacleGenerator.position = obstacleStartPoint;
 
         //reset player and background brightness
-        theCamera.RestartBrightness();
-        theCamera.ChangePlayerColour();
+        theCamera.RestartBrightness();//gameOption);
+        //theCamera.ChangePlayerColour();
 
         //reset lightbulbs
         thePlayer.bulbCounter = 3;
@@ -91,9 +122,13 @@ public class GameManager : MonoBehaviour {
         thePlayer.lifeText.gameObject.SetActive(false);
         theLives.gameObject.SetActive(false);
 
+       
+
         //show the player again
         thePlayer.gameObject.SetActive(true);
     }
+
+    
 
     public void SavePlayersData()
     {

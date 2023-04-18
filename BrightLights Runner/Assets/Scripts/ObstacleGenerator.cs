@@ -27,10 +27,10 @@ public class ObstacleGenerator : MonoBehaviour {
     void Update()
     {
        
-            Debug.Log(" transform position: " + transform.position.x + " obstacle generation point:" + generationPoint.position.x);
+           // Debug.Log(" transform position: " + transform.position.x + " obstacle generation point:" + generationPoint.position.x);
             if (transform.position.x < generationPoint.position.x)
             {
-                Debug.Log("generate ground");
+               // Debug.Log("generate ground");
                 distanceBetween = Random.Range(distanceMin, distanceMax);
                 transform.position = new Vector3(transform.position.x + obstacleWidth + distanceBetween, transform.position.y, transform.position.z); //+10 because the ground is 10units long
 

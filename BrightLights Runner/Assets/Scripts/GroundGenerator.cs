@@ -28,11 +28,11 @@ public class GroundGenerator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
-            Debug.Log(" transform position: " + transform.position.x + " ground generation point:" + generationPoint.position.x);
+           // Debug.Log(" transform position: " + transform.position.x + " ground generation point:" + generationPoint.position.x);
 
             if (transform.position.x < generationPoint.position.x)
             {
-                Debug.Log("generate ground");
+               // Debug.Log("generate ground");
                 transform.position = new Vector3(transform.position.x + groundWidth, transform.position.y, transform.position.z);
 
                 //generate new ground
@@ -48,17 +48,17 @@ public class GroundGenerator : MonoBehaviour {
 
             newGround.transform.SetParent(GameObject.Find("CompositeGround").transform);
 
-            SpriteRenderer groundSpriteRenderer = newGround.GetComponent<SpriteRenderer>();
-            if (useOrangeMaterial)
-            {
-                groundSpriteRenderer.material = OrangeMaterial;
+            //SpriteRenderer groundSpriteRenderer = newGround.GetComponent<SpriteRenderer>();
+            //if (useOrangeMaterial)
+            //{
+               // groundSpriteRenderer.material = OrangeMaterial;
                 //newGround.GetComponent<Renderer>().sharedMaterial = OrangeMaterial;
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 //newGround.GetComponent<Renderer>().sharedMaterial = blackMaterial;
-                groundSpriteRenderer.material = null; // Reset to default material
-            }
+               // groundSpriteRenderer.material = null; // Reset to default material
+            //}
 
             newGround.SetActive(true);
 
