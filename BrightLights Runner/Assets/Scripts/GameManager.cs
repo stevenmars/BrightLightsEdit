@@ -6,6 +6,9 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Firebase.Database;
+using Firebase.Extensions;
+using Firebase.Functions;
 
 public class GameManager : MonoBehaviour {
 
@@ -25,8 +28,13 @@ public class GameManager : MonoBehaviour {
 
     public static int gameOption;
 
+    //public static GameManager Instance;
+
+   // DatabaseReference reference;
+
     private void Awake()
     {
+       // Instance = this;
         gameOption = UnityEngine.Random.Range(1, 4); // Generates a random number between 1 and 3
         Debug.Log("GameOption Random No " + gameOption);
         theCamera.SetGameOption(gameOption); // Pass the game option to the CameraController
@@ -40,17 +48,31 @@ public class GameManager : MonoBehaviour {
         // Start Location Services
         StartCoroutine(StartLocationServices());
 
-        InputSystem.EnableDevice(LightSensor.current);
-        InputSystem.EnableDevice(ProximitySensor.current);
+        if (LightSensor.current != null)
+        {
+            InputSystem.EnableDevice(LightSensor.current);
+        }
+        else
+        {
+            Debug.LogWarning("Light sensor is not available on this device.");
+        }
+
+        if (ProximitySensor.current != null)
+        {
+            InputSystem.EnableDevice(ProximitySensor.current);
+        }
+        else
+        {
+            Debug.LogWarning("Proximity sensor is not available on this device.");
+        }
+
+        
 
         Application.targetFrameRate = 60; //to fix low fps issue
         groundStartPoint = GroundGenerator.position;
         obstacleStartPoint = ObstacleGenerator.position;
         
-
-        //gameOption = UnityEngine.Random.Range(1, 4); // Generates a random number between 1 and 3
-        //Debug.Log("GameOption Random No " + gameOption);
-        //theCamera.SetGameOption(gameOption); // Pass the game option to the CameraController
+     
 
     }
 	
@@ -171,29 +193,6 @@ public class GameManager : MonoBehaviour {
 
     public void SavePlayersData()
     {
-        //Debug.Log("aaaaa");
-        //// Get the device model, brightness, ambient light, location, and time
-        //string deviceModel = SystemInfo.deviceModel;
-        //float brightness = Screen.brightness;
-        //float ambientLight = LightSensor.current.lightLevel.ReadValue();
-        //var proximity = ProximitySensor.current.distance;
-
-        //string location = Input.location.lastData.latitude + ", " + Input.location.lastData.longitude;
-        //string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        //Vector3 gyroData = Input.gyro.rotationRateUnbiased;
-
-        ////convert to strings
-        //string partID = ParticipantIDController.participantID; //global
-        //string hitCount = thePlayer.hitCounter.ToString();
-        //string bulbCount = thePlayer.bulbCounter.ToString();
-        //string lifeCount = thePlayer.lifeCounter.ToString();
-        //string playTime = thePlayer.timer.ToString("F2") + "s";
-        //string firstColour = ColorUtility.ToHtmlStringRGB(thePlayer.background1); //gives hex codes - easy to convert to RGB
-        //string secondColour = ColorUtility.ToHtmlStringRGB(thePlayer.background2);
-        //string thirdColour = ColorUtility.ToHtmlStringRGB(thePlayer.background3);
-        //string firstTime = thePlayer.time1.ToString("F2") + "s";
-        //string secondTime = thePlayer.time2.ToString("F2") + "s";
-        //string thirdTime = thePlayer.time3.ToString("F2") + "s";
 
         string deviceModel = SystemInfo.deviceModel;
         Debug.Log("Device Model: " + deviceModel);
@@ -291,13 +290,7 @@ public class GameManager : MonoBehaviour {
 
         try
         {
-            //using (FileStream fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.None))
-            //{
-            //    using (StreamWriter writer = new StreamWriter(fileStream))
-            //    {
-            //        writer.Write(formattedData);
-            //    }
-            //}
+            
             File.AppendAllText(filePath, jsonData + "\n");
         }
         catch (Exception e)
@@ -305,48 +298,62 @@ public class GameManager : MonoBehaviour {
             Debug.LogError("Error while writing to file: " + e.Message);
         }
 
-        //using (StreamWriter writer = new StreamWriter(filePath, true))
-        //{
-        //    WriteData(deviceModel, brightness, ambientLight, location, timestamp, gyroData, partID, hitCount, bulbCount, lifeCount, playTime, firstTime, firstColour, secondTime, secondColour, thirdTime, thirdColour, writer);
-        //    writer.Flush();
-        //}
+        
 
         Debug.Log("Data saved successfully");
 
-        // string filePath = Path.Combine(Application.persistentDataPath, "BrightLightsData.txt");
-        //if (!File.Exists(filePath))
-        //{
-        //    File.WriteAllText(filePath, ""); // Create an empty file
-        //}
 
-        //StringBuilder sb = new StringBuilder();
-        //using (StreamWriter writer = File.AppendText(filePath))
-        //{
-        //    WriteData(deviceModel, brightness, ambientLight, location, timestamp, gyroData, partID, hitCount, bulbCount, lifeCount, playTime, firstTime, firstColour, secondTime, secondColour, thirdTime, thirdColour, writer);
-        //    writer.Flush();
-        //}
-            //{
-            //    WriteData(deviceModel, brightness, ambientLight, location, timestamp, gyroData, partID, hitCount, bulbCount, lifeCount, playTime, firstTime, firstColour, secondTime, secondColour, thirdTime, thirdColour, writer);
-            //}
-            //File.AppendAllText(filePath, sb.ToString());
-
-            // Prepare the data to be written in the text file
-            // string dataToWrite = WriteData(deviceModel, brightness, ambientLight, location, timestamp, gyroData, partID, hitCount, bulbCount, lifeCount, playTime, firstTime, firstColour, secondTime, secondColour, thirdTime, thirdColour);
-
-            //// Check if the file exists
-            //if (!File.Exists(filePath))
-            //{
-            //    // Create the file and add a header
-            //    string header = "Device Model, Brightness, Ambient Light, Location, Timestamp, Gyroscope Data, Participant ID, Obstacles Hit, Lightbulbs Remaining, Lives Remaining, Run Length, First Time, First Colour, Second Time, Second Colour, Third Time, Third Colour";
-            //    File.WriteAllText(filePath, header + Environment.NewLine);
-            //}
-
-            //// Append the data to the file
-            //File.AppendAllText(filePath, dataToWrite + Environment.NewLine);
-
-            Handheld.Vibrate();
+        if (FirebaseAuthManager.auth == null || FirebaseAuthManager.auth.CurrentUser == null)
+        {
+            Debug.LogError("User is not authenticated. Cannot save data.");
+            return;
+        }
 
 
+
+        string json = JsonUtility.ToJson(playerData);
+
+            string userId = FirebaseAuthManager.auth.CurrentUser.UserId; // Get user ID from the authentication system you implemented
+            string key = FirebaseAuthManager.reference.Child("players").Push().Key;
+            FirebaseAuthManager.reference.Child("players").Child(userId).Child(key).SetRawJsonValueAsync(json).ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                Debug.LogError("Error saving data to Firebase: " + task.Exception);
+            }
+            else
+            {
+                Debug.Log("Data saved to Firebase successfully.");
+            }
+        });
+
+
+
+        Handheld.Vibrate();
+
+
+    }
+
+    public async void DeleteUserData()
+    {
+        try
+        {
+            string userId = FirebaseAuthManager.auth.CurrentUser.UserId; // Get user ID from the authentication system you implemented
+
+            Debug.Log("userid" + userId);
+
+            // Delete data from Firebase Realtime Database
+            await FirebaseDatabase.DefaultInstance.GetReference("users").Child(userId).RemoveValueAsync();
+
+            // Delete data from BigQuery using the Cloud Function
+            FirebaseFunctions functions = FirebaseFunctions.DefaultInstance;
+            await functions.GetHttpsCallable("deleteUserFromBigQuery").CallAsync(new Dictionary<string, object> { { "userId", userId } });
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error deleting user data: {e.Message}");
+        }
+
+       
     }
 
     private string FormatData(string deviceModel, float brightness, float ambientLight, string location, string timestamp, Vector3 gyroData, string partID, string hitCount, string bulbCount, string lifeCount, string playTime, string firstTime, string firstColour, string secondTime, string secondColour, string thirdTime, string thirdColour)

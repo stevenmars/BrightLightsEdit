@@ -4,8 +4,9 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation(name: 'UnityAds', ext:'aar')
-    implementation(name: 'billing-4.0.0', ext:'aar')
     implementation(name: 'common', ext:'aar')
+    implementation(name: 'billing-4.0.0', ext:'aar')
+    implementation project('FirebaseApp.androidlib')
 
 }
 

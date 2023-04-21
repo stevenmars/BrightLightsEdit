@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://brightlights2023-3b514-default-rtdb.europe-west1.firebasedatabase.app</string>
+  <string name="gcm_defaultSenderId" translatable="false">131669733847</string>
+  <string name="google_storage_bucket" translatable="false">brightlights2023-3b514.appspot.com</string>
+  <string name="project_id" translatable="false">brightlights2023-3b514</string>
+  <string name="google_api_key" translatable="false">AIzaSyDjy1JYqfpN3NxarGWoRmyCH3y0cCvFo4s</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDjy1JYqfpN3NxarGWoRmyCH3y0cCvFo4s</string>
+  <string name="google_app_id" translatable="false">1:131669733847:android:9131dd7d68e5a3ab5d5b92</string>
+  <string name="default_web_client_id" translatable="false">131669733847-52g28rqnvhv8bsr09km0svdup6ms4fg5.apps.googleusercontent.com</string>
+</resources>
