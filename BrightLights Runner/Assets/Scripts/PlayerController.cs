@@ -48,11 +48,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-       // if (Time.time - lastPositionUpdateTime >= positionUpdateInterval)
-       // {
-        //    playerPosition = transform.position.x;
-        //    lastPositionUpdateTime = Time.time;
-       // }
 
         //update the timer
         timer += Time.deltaTime;
@@ -63,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
         //move forward
         rb2d.velocity = new Vector2(moveSpeed, rb2d.velocity.y);
-        //transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+    
 
         if (Input.touchCount > 0)
         {
@@ -89,7 +84,7 @@ public class PlayerController : MonoBehaviour
                     background3 = theCamera.cam.backgroundColor;
                 }
 
-                theCamera.RestartBrightness(); //reset background to white
+                theCamera.RestartBrightness(); //reset background to original colour (white/red/blue)
                 bulbCounter = bulbCounter - 1;
                 SetBulbText(); //update UI bulbCounter
 
@@ -98,8 +93,8 @@ public class PlayerController : MonoBehaviour
                 {
                     theBulb.gameObject.SetActive(false);
                     bulbText.gameObject.SetActive(false);
-                    theLives.gameObject.SetActive(true);
-                    lifeText.gameObject.SetActive(true);
+                    //theLives.gameObject.SetActive(true);
+                    //lifeText.gameObject.SetActive(true);
                 }
             }
             else if ((Input.GetTouch(0).phase == TouchPhase.Began && grounded)) //if player is grounded and jump is pressed

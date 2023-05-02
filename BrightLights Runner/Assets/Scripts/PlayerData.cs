@@ -22,4 +22,9 @@ public class PlayerData
     public string secondColour;
     public string thirdTime;
     public string thirdColour;
+
+    public string colourTest;
+    public int age;
+    public string gender;
+    public string colourBlind;
 }

@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour {
 
     public static int gameOption;
 
+    public string colourTest;
+
     //public static GameManager Instance;
 
    // DatabaseReference reference;
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
         // Enable the Gyroscope
         Input.gyro.enabled = true;
         // Start Location Services
@@ -211,11 +214,13 @@ public class GameManager : MonoBehaviour {
         }
         Debug.Log("Ambient Light: " + ambientLight);
 
-       // var proximity = ProximitySensor.current.distance;
-       // Debug.Log("Proximity: " + proximity);
+        // var proximity = ProximitySensor.current.distance;
+        // Debug.Log("Proximity: " + proximity);
 
-        string location = Input.location.lastData.latitude + ", " + Input.location.lastData.longitude;
+        string location = Input.location.lastData.latitude.ToString("F2") + ", " + Input.location.lastData.longitude.ToString("F2");
         Debug.Log("Location: " + location);
+        //new edit
+
 
         string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         Debug.Log("Timestamp: " + timestamp);
@@ -223,6 +228,21 @@ public class GameManager : MonoBehaviour {
         Vector3 gyroData = Input.gyro.rotationRateUnbiased;
         Debug.Log("Gyroscope Data: " + gyroData);
 
+
+        if (gameOption==1)
+        {
+            colourTest = "Red-Green";
+        }
+        else if (gameOption==2)
+        {
+            colourTest = "Blue-Yellow";
+        }
+        else
+        {
+            colourTest = "Black-White";
+        }
+        Debug.Log("Colour Test" + colourTest);
+      
         // convert to strings
         string partID = ParticipantIDController.participantID; //global
         Debug.Log("Participant ID: " + partID);
@@ -236,7 +256,8 @@ public class GameManager : MonoBehaviour {
         string lifeCount = thePlayer.lifeCounter.ToString();
         Debug.Log("Lives Remaining: " + lifeCount);
 
-        string playTime = thePlayer.timer.ToString("F2") + "s";
+        string playTime = thePlayer.timer.ToString("F2");
+        //playTime = (float)Math.Round(playTime, 2); //round to 2dp
         Debug.Log("Run Length: " + playTime);
 
         string firstColour = ColorUtility.ToHtmlStringRGB(thePlayer.background1); //gives hex codes - easy to convert to RGB
@@ -246,9 +267,11 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Second Colour: " + secondColour);
         Debug.Log("Third Colour: " + thirdColour);
 
-        string firstTime = thePlayer.time1.ToString("F2") + "s";
-        string secondTime = thePlayer.time2.ToString("F2") + "s";
-        string thirdTime = thePlayer.time3.ToString("F2") + "s";
+        string firstTime = thePlayer.time1.ToString("F2");
+        string secondTime = thePlayer.time2.ToString("F2"); ;
+        //secondTime = (float)Math.Round(secondTime, 2);
+        string thirdTime = thePlayer.time3.ToString("F2"); ;
+        //thirdTime = (float)Math.Round(thirdTime, 2);
         Debug.Log("First Time: " + firstTime);
         Debug.Log("Second Time: " + secondTime);
         Debug.Log("Third Time: " + thirdTime);
@@ -283,7 +306,7 @@ public class GameManager : MonoBehaviour {
 
         Debug.Log("Saving data to: " + filePath);
 
-        Debug.Log("Saving data to: " + filePath);
+        //Debug.Log("Saving data to: " + filePath);
 
         string jsonData = JsonUtility.ToJson(playerData, true);
         //Debug.Log("Formatted data to save: " + formattedData);
