@@ -5,13 +5,22 @@ using UnityEngine.Android;
 
 public class PermissionRequester : MonoBehaviour
 {
- 
+
     void Start()
     {
-        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+        if (!PlayerPrefs.HasKey("ConsentShown"))
         {
-            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+            {
+                Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+            }
+            if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+            {
+                Permission.RequestUserPermission(Permission.FineLocation);
+            }
+
         }
     }
 }
+
 

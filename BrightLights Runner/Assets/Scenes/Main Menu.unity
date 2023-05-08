@@ -210,6 +210,68 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1834474336}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &534430454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 534430456}
+  - component: {fileID: 534430455}
+  m_Layer: 0
+  m_Name: PermissionRequester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &534430455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534430454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac08d34f10ff8945a8c5285bdd5ae71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &534430456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534430454}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 255.00049, y: 1209, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &680966794 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6183087082709574263, guid: b5af6af6b440eca42873d6de614b7ec2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4638762248654732834}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &695770295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4100477381761159504, guid: b5af6af6b440eca42873d6de614b7ec2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4638762248654732834}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &735403300
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +969,7 @@ GameObject:
   - component: {fileID: 1290943177}
   - component: {fileID: 1290943179}
   - component: {fileID: 1290943178}
+  - component: {fileID: 1290943180}
   m_Layer: 5
   m_Name: WelcomeDisplay
   m_TagString: Untagged
@@ -973,6 +1036,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290943176}
   m_CullTransparentMesh: 1
+--- !u!114 &1290943180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290943176}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1786438080852b447a292bf08103857f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  welcomeDisplay: {fileID: 1290943176}
+  agreeButton: {fileID: 1661903578}
+  declineButton: {fileID: 1830108491}
 --- !u!1 &1384970114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1333,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661903576}
   m_CullTransparentMesh: 1
+--- !u!114 &1663879981 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4638762249024727441, guid: b5af6af6b440eca42873d6de614b7ec2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4638762248654732834}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1830108489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,7 +1762,8 @@ GameObject:
   - component: {fileID: 2013296123}
   - component: {fileID: 2013296127}
   - component: {fileID: 2013296128}
-  - component: {fileID: 2013296129}
+  - component: {fileID: 2013296130}
+  - component: {fileID: 2013296131}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1804,7 +1895,23 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &2013296129
+--- !u!114 &2013296130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013296122}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4566a21e62643429fc8c5ccc85d4de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsButton: {fileID: 680966794}
+  exitSettingsButton: {fileID: 1663879981}
+  deleteDataButton: {fileID: 4638762248654732835}
+  settingsPanel: {fileID: 695770295}
+--- !u!114 &2013296131
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1813,7 +1920,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2013296122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42fe6f44c193e8b46b25bbbafc485927, type: 3}
+  m_Script: {fileID: 11500000, guid: 1786438080852b447a292bf08103857f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   welcomeDisplay: {fileID: 1290943176}
@@ -1925,6 +2032,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599342822962881841, guid: b5af6af6b440eca42873d6de614b7ec2,
+        type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7343103666841421867, guid: b5af6af6b440eca42873d6de614b7ec2,
         type: 3}
@@ -2054,7 +2166,7 @@ PrefabInstance:
     - target: {fileID: 7861331406406933065, guid: b5af6af6b440eca42873d6de614b7ec2,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5af6af6b440eca42873d6de614b7ec2, type: 3}
@@ -2119,4 +2231,4 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4638762248654732837}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
